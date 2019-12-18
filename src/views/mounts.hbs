@@ -1,0 +1,133 @@
+<div>
+  <div class="alert alert-success text-center" id="dashboard" role="alert">
+    <h1>Montajes </h1>
+  </div>
+
+  <div class="container">
+ <!-- MOUNT FORM -->
+    <form id="formMouts">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">CODIGO</label>
+          <input type="text" class="form-control" id="code" name="codigo" value="" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">NOMBRE</label>
+          <input type="text" class="form-control" id="name" name="nombre" value="" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">DESCRIPCION</label>
+        <input type="text" class="form-control" id="description" placeholder="Describe el proposito del montaje"
+          name="descripcion" value="" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputState">TIPO DE MONTAJE</label>
+          <select id="mountType" class="form-control" name="idTipoMontaje" required>
+            <option selected>Choose...</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+        </div>
+
+      </div>
+      <button onclick="createMount()" type="button" class="btn btn-success">Crear Montaje</button>
+      <div class="buttom-separate">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+          Agregar Material
+        </button>
+
+        <!-- MODAL ADD MATERIALS -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Materiales</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="">
+                <div class="">
+                  <div class="container-fluid">
+                    <div class="col-xs-12">
+                      <!-- TABLA INICIA -->
+                      <div class="table-responsive">
+                        <table id="tabla" class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th style="width:160px">Codigo</th>
+                              <th>Referencia</th>
+                              <th>Opciones</th>
+                              <th>Cantidad</th>
+                            </tr>
+                            <tr>
+                              <td colspan="4">
+                                <input id="buscar" type="text" class="form-control"
+                                  placeholder="Escriba algo para filtrar" />
+                              </td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {{#if material}}
+
+                            {{#each material}}
+                            <tr>
+                              <td id="codigo{{@key}}">{{codigo}}</td>
+                              <td id="referencia{{@key}}">{{referencia}}</td>
+                              <td><input id="cantidad{{@key}}" type="number" name="quantity" min="1" value="1"
+                                  class="number"></td>
+                              <td>
+                                <a class="btn btn-success" id="{{@key}}" onclick="addMaterial(id)">
+                                  Agregar
+                                </a>
+                              </td>
+                            </tr>
+                            {{/each}}
+                            {{else}}
+
+                            <p>No Materials yet</p>
+
+                            {{/if}}
+
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <!-- TABLA FINALIZA -->
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         <!-- FIN DEL MODAL -->
+
+    </form>
+     <!-- TABLE WITH THE MATERIALS -->
+    <table id="materialTable" class="table table-striped">
+      <thead class="thead-inverse">
+        <tr>
+          <th scope="col">Codigo</th>
+          <th scope="col">Referencia</th>
+          <th scope="col">cantidad</th>
+        </tr>
+      </thead>
+      <tbody id="materialBody" class="tbodyData">
+
+      </tbody>
+    </table>
+  </div>
+
+  <script src="/js/mounts.js"></script>
+  <script src="/js/main.js"></script>
+</div>

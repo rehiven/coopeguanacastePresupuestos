@@ -1,0 +1,84 @@
+<div>
+    <div class="alert alert-success text-center" id="dashboard" role="alert">
+        <h1>Materiales </h1>
+    </div>
+
+    <div id="materials-container">
+
+        <div class="card-header">
+            <h1>Materiales</h1>
+        </div>
+        <div class="card-footer">
+
+        </div>
+        <form action="/new-material" method="POST">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">Codigo</label>
+                    <input type="text" class="form-control" id="validationDefault01" name="codigo" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">Referencia</label>
+                    <input type="text" class="form-control" id="validationDefault02" name="referencia" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationDefault03">Descripcion</label>
+                    <input type="text" class="form-control" id="validationDefault03" name="descripcion" required>
+                </div>
+
+            </div>
+            <button class="btn btn-primary" type="submit">Guardar Material</button>
+        </form>
+    </div>
+    <div class="table-materials">
+        <div class="table-responsive">
+            <!-- TABLA INICIA -->
+            <table id="tabla" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="width:160px">Codigo</th>
+                        <th>Referencia</th>
+                        <th style="width:220px">Descripcion</th>
+                        <th style="width:140px">Opciones</th>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <input id="buscar" type="text" class="form-control"
+                                placeholder="Escriba algo para filtrar" />
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#if material}}
+
+                    {{#each material}}
+                    <tr>
+                        <td id="codigo{{@key}}">{{codigo}}</td>
+                        <td id="referencia{{@key}}">{{referencia}}</td>
+                        <td id="descripcion{{@key}}" class="text-right">{{descripcion}}</td>
+                        <td>
+                            <a href="/delete-material/{{@key}}" class="btn btn-danger">
+                                delete
+                            </a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                    {{else}}
+
+                    <div class="alert alert-warning" role="alert">
+                        A simple warning alert—check it out!
+                    </div>
+
+                    {{/if}}
+
+                </tbody>
+            </table>
+            <!-- TABLA FINALIZA -->
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+</div>

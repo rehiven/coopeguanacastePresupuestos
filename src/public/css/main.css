@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+#login .container #login-row #login-column #login-box {
+  margin-top: 120px;
+  max-width: 600px;
+  height: 320px;
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -85px;
+}
+
+.buttom-separate{
+  margin: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#materials-container{
+  margin: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.table-materials{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+#popupBody{
+  width: 46%;
+  padding: 2%;
+  border-radius: 15px;
+  box-shadow: 0 0 5px #CCC;
+  background: #FFF;
+  position: relative;
+  margin: 20% auto;
+  transition: all 5s ease-in-out;
+}
+
+#cerrar{
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #F00;
+  transition: all 200ms;
+}
+
+.number {
+  width: 3em;
+}

@@ -1,0 +1,34 @@
+#dashboard{
+    margin: 30px;
+}
+.table{
+    margin-top: 30px;
+}
+
+.employeeForm{
+    margin: 20 80 80 80px;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+div.dropdown-menu a{
+    cursor: pointer;
+} 
+
+td.deleteEmployee{
+    cursor: pointer;
+}
+
+td.editEmployee{
+    cursor: pointer;
+}
+
+.mostar{display:block;}
+
+.ocultar{display:none;}
+
+#keyMaterial{
+   display: none;
+}

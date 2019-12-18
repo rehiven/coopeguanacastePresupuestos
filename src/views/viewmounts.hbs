@@ -1,0 +1,60 @@
+<div>
+  <div id="materials-container">
+
+    <div class="card-header">
+      <h1>Materiales</h1>
+    </div>
+    <div class="card-footer">
+      <a href="/mounts">
+        <button type="button" class="btn btn-primary btn-lg btn-block">Crear Nuevo montaje</button>
+      </a>
+    </div>
+  </div>
+  <div class="table-materials">
+    <div class="table-responsive">
+      <!-- TABLA INICIA -->
+      <table id="tabla" class="table table-striped">
+        <thead>
+          <tr>
+            <th style="width:160px">Codigo</th>
+            <th>Descripcion</th>
+            <th style="width:220px">T-Montjae</th>
+            <th style="width:140px">Opciones</th>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <input id="buscar" type="text" class="form-control" placeholder="Escriba algo para filtrar" />
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          {{#if montaje}}
+
+          {{#each montaje}}
+          <tr>
+            <td id="codigo{{@key}}">{{codigo}}</td>
+            <td id="referencia{{@key}}">{{descripcion}}</td>
+            <td id="descripcion{{@key}}" class="text-right">{{tipoMontaje}}</td>
+            <td>
+              <a href="/delete-mount/{{@key}}" class="btn btn-danger">
+                delete
+              </a>
+            </td>
+          </tr>
+          {{/each}}
+          {{else}}
+
+          <div class="alert alert-warning" role="alert">
+            No existen Montajes
+          </div>
+
+          {{/if}}
+
+        </tbody>
+      </table>
+      <!-- TABLA FINALIZA -->
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+</div>
