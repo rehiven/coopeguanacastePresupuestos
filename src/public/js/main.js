@@ -1,3 +1,4 @@
+/*
 var textbuscar = document.getElementById("buscar");
 textbuscar.onkeyup = function(){
 	buscar(this);
@@ -11,3 +12,4 @@ function buscar(inputbuscar){
 		tr.className = (textotr.indexOf(valorabuscar)>=0)?"mostrar":"ocultar";
 	}
 }
+*/

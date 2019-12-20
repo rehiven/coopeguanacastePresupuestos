@@ -1,10 +1,9 @@
 <div>
-  <div class="alert alert-success text-center" id="dashboard" role="alert">
-    <h1>Montajes </h1>
-  </div>
-
   <div class="container">
- <!-- MOUNT FORM -->
+    <div class="alert alert-success text-center" id="dashboard" role="alert">
+      <h1>Montajes </h1>
+    </div>
+    <!-- MOUNT FORM -->
     <form id="formMouts">
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -37,12 +36,12 @@
       </div>
       <button onclick="createMount()" type="button" class="btn btn-success">Crear Montaje</button>
       <div class="buttom-separate">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addMaterialModal">
           Agregar Material
         </button>
 
         <!-- MODAL ADD MATERIALS -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        <div class="modal fade" id="addMaterialModal" tabindex="-1" role="dialog"
           aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -57,50 +56,48 @@
                   <div class="container-fluid">
                     <div class="col-xs-12">
                       <!-- TABLA INICIA -->
-                      <div class="table-responsive">
-                        <table id="tabla" class="table table-striped">
-                          <thead>
-                            <tr>
-                              <th style="width:160px">Codigo</th>
-                              <th>Referencia</th>
-                              <th>Opciones</th>
-                              <th>Cantidad</th>
-                            </tr>
-                            <tr>
-                              <td colspan="4">
-                                <input id="buscar" type="text" class="form-control"
-                                  placeholder="Escriba algo para filtrar" />
-                              </td>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {{#if material}}
-
-                            {{#each material}}
-                            <tr>
-                              <td id="codigo{{@key}}">{{codigo}}</td>
-                              <td id="referencia{{@key}}">{{referencia}}</td>
-                              <td><input id="cantidad{{@key}}" type="number" name="quantity" min="1" value="1"
-                                  class="number"></td>
-                              <td>
-                                <a class="btn btn-success" id="{{@key}}" onclick="addMaterial(id)">
-                                  Agregar
-                                </a>
-                              </td>
-                            </tr>
-                            {{/each}}
-                            {{else}}
-
-                            <p>No Materials yet</p>
-
-                            {{/if}}
-
-                          </tbody>
-                        </table>
+                      <div class="panel">
+                        <div class="body">
+                          <form class="form-inline my-2 my-lg-0">
+                            <input id="searchBox" class="form-control mr-sm-2" type="search" placeholder="Buscar"
+                              aria-label="Search">
+                          </form>
+                        </div>
                       </div>
+                      <table class="myTable table hover">
+                        <tbody>
+                          <tr>
+                            <th>Codigo</th>
+                            <th>Referencia</th>
+                            <th>Cantidad</th>
+                            <th>Opciones</th>
+                          </tr>
 
-                      <!-- TABLA FINALIZA -->
+                          {{#if material}}
+
+                          {{#each material}}
+                          <tr>
+                            <td id="codigo{{@key}}">{{codigo}}</td>
+                            <td id="referencia{{@key}}">{{referencia}}</td>
+                            <td><input id="cantidad{{@key}}" type="number" name="quantity" min="1" value="1"
+                                class="number"></td>
+                            <td>
+                              <a class="btn btn-success" id="{{@key}}" onclick="addMaterial(id)">
+                                Agregar
+                              </a>
+                            </td>
+                          </tr>
+                          {{/each}}
+                          {{else}}
+
+                          <p>No Materials yet</p>
+
+                          {{/if}}
+
+                        </tbody>
+                      </table>
                     </div>
+                    <!-- TABLA FINALIZA -->
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -110,10 +107,10 @@
             </div>
           </div>
         </div>
-         <!-- FIN DEL MODAL -->
+        <!-- FIN DEL MODAL -->
 
     </form>
-     <!-- TABLE WITH THE MATERIALS -->
+    <!-- TABLE WITH THE MATERIALS -->
     <table id="materialTable" class="table table-striped">
       <thead class="thead-inverse">
         <tr>

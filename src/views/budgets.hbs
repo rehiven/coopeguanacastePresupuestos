@@ -1,36 +1,30 @@
-<div>
-    <div class="container-fluid">
-        <div>
-            <div class="col-xs-12">
-                <!-- TABLA INICIA -->
-                <table id="tabla" class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th style="width:160px">Nombre</th>
-                            <th>Apellido</th>
-                            <th style="width:220px">Profesion</th>
-                            <th style="width:140px">Sueldo</th>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <input id="buscar" type="text" class="form-control"
-                                    placeholder="Escriba algo para filtrar" />
-                            </td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Juan</td>
-                            <td>Perez Patiño</td>
-                            <td>Marketing Empresarial</td>
-                            <td class="text-right">S/. 9000.00</td>
-                        </tr>
+<div class="container">
+    <div class="alert alert-success text-center" id="dashboard" role="alert">
+    <h1>Presupuestos </h1>
+  </div>
 
-                    </tbody>
-                </table>
-                <!-- TABLA FINALIZA -->
-            </div>
-        </div>
+  <div class="panel">
+    <div class="body">
+      <form class="form-inline my-2 my-lg-0">
+        <input id="searchBox" class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+      </form>
     </div>
-     <script src="/js/main.js"></script>
+  </div>
+  <table class="myTable table hover">
+    <tbody>
+      <tr>
+        <th>Zona</th>
+        <th>Tipo</th>
+        <th>Nombre</th>
+        <th>Id Interesado</th>
+        <th>Estado</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>delectus aut autem</td>
+        <td>yes</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

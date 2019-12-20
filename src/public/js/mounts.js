@@ -21,8 +21,8 @@ function addMaterial(key) {
 function createMount() {
   let materiales = JSON.parse(localStorage.getItem("materials"));
   let data = {};
-  if (localStorage.getItem("materials") === null) {
-    window.alert("Agregue Materiales");
+  if (localStorage.getItem("materials") === null || materiales.length == 0) {
+    alertify.warning('Debe Agregar Materiales');
   } else {
     let code = document.getElementById("code").value;
     let name = document.getElementById("name").value;

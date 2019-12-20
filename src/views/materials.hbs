@@ -1,16 +1,9 @@
 <div>
-    <div class="alert alert-success text-center" id="dashboard" role="alert">
-        <h1>Materiales </h1>
-    </div>
-
-    <div id="materials-container">
-
-        <div class="card-header">
-            <h1>Materiales</h1>
+    <div id="materials-container" class="container">
+        <div class="alert alert-success text-center" id="dashboard" role="alert">
+            <h1>Materiales </h1>
         </div>
-        <div class="card-footer">
 
-        </div>
         <form action="/new-material" method="POST">
             <div class="form-row">
                 <div class="col-md-4 mb-3">
@@ -33,52 +26,50 @@
             <button class="btn btn-primary" type="submit">Guardar Material</button>
         </form>
     </div>
-    <div class="table-materials">
-        <div class="table-responsive">
-            <!-- TABLA INICIA -->
-            <table id="tabla" class="table table-striped">
-                <thead>
-                    <tr>
-                        <th style="width:160px">Codigo</th>
-                        <th>Referencia</th>
-                        <th style="width:220px">Descripcion</th>
-                        <th style="width:140px">Opciones</th>
-                    </tr>
-                    <tr>
-                        <td colspan="4">
-                            <input id="buscar" type="text" class="form-control"
-                                placeholder="Escriba algo para filtrar" />
-                        </td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#if material}}
 
-                    {{#each material}}
-                    <tr>
-                        <td id="codigo{{@key}}">{{codigo}}</td>
-                        <td id="referencia{{@key}}">{{referencia}}</td>
-                        <td id="descripcion{{@key}}" class="text-right">{{descripcion}}</td>
-                        <td>
-                            <a href="/delete-material/{{@key}}" class="btn btn-danger">
-                                delete
-                            </a>
-                        </td>
-                    </tr>
-                    {{/each}}
-                    {{else}}
-
-                    <div class="alert alert-warning" role="alert">
-                        A simple warning alert—check it out!
-                    </div>
-
-                    {{/if}}
-
-                </tbody>
-            </table>
-            <!-- TABLA FINALIZA -->
+    <div class="container">
+        <div>
+            <h1>Presupuestos</h1>
         </div>
-    </div>
+        <div class="panel">
+            <div class="body">
+                <form class="form-inline my-2 my-lg-0">
+                    <input id="searchBox" class="form-control mr-sm-2" type="search" placeholder="Buscar"
+                        aria-label="Search">
+                </form>
+            </div>
+        </div>
+        <table class="myTable table hover">
+            <tbody>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Referencia</th>
+                    <th>Descripcion</th>
+                    <th>Opciones</th>
+                </tr>
+                {{#if material}}
 
+                {{#each material}}
+                <tr>
+                    <td id="codigo{{@key}}">{{codigo}}</td>
+                    <td id="referencia{{@key}}">{{referencia}}</td>
+                    <td id="descripcion{{@key}}" class="text-right">{{descripcion}}</td>
+                    <td>
+                        <a href="/delete-material/{{@key}}" class="btn btn-danger">
+                            delete
+                        </a>
+                    </td>
+                </tr>
+                {{/each}}
+                {{else}}
+
+                <div class="alert alert-warning" role="alert">
+                    A simple warning alert—check it out!
+                </div>
+
+                {{/if}}
+            </tbody>
+        </table>
+    </div>
     <script src="/js/main.js"></script>
 </div>
