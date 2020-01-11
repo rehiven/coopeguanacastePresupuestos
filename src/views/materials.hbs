@@ -1,9 +1,8 @@
+<header class="text-center text-white">
+    <h1 class="display-4">Materiales</h1>
+</header>
 <div>
     <div id="materials-container" class="container">
-        <div class="alert alert-success text-center" id="dashboard" role="alert">
-            <h1>Materiales </h1>
-        </div>
-
         <form action="/new-material" method="POST">
             <div class="form-row">
                 <div class="col-md-4 mb-3">
@@ -71,5 +70,18 @@
             </tbody>
         </table>
     </div>
+    <script>
+
+        let options = {
+            numberPerPage: 10, //Cantidad de datos por pagina
+            goBar: true, //Barra donde puedes digitar el numero de la pagina al que quiere ir
+            pageCounter: true, //Contador de paginas, en cual estas, de cuantas paginas
+        };
+
+        let filterOptions = {
+            el: '#searchBox' //Caja de texto para filtrar, puede ser una clase o un ID
+        };
+        paginate.init('.myTable', options, filterOptions);
+    </script>
     <script src="/js/main.js"></script>
 </div>

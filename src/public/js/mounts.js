@@ -22,7 +22,7 @@ function createMount() {
   let materiales = JSON.parse(localStorage.getItem("materials"));
   let data = {};
   if (localStorage.getItem("materials") === null || materiales.length == 0) {
-    alertify.warning('Debe Agregar Materiales');
+    alertify.warning("Debe Agregar Materiales");
   } else {
     let code = document.getElementById("code").value;
     let name = document.getElementById("name").value;
@@ -91,8 +91,8 @@ function getMaterials() {
                                     <tr>
                                       <th style="width:160px">Codigo</th>
                                       <th>Referencia</th>
-                                      <th>Opciones</th>
                                       <th>Cantidad</th>
+                                      <th>Opciones</th>
                                     </tr>
                             </thead>
                             <tbody id="materialBody" class="tbodyData">
@@ -129,6 +129,9 @@ function deleteMaterial(id) {
   for (let i = 0; i < materials.length; i++) {
     if (materials[i].id == id) {
       materials.splice(i, 1);
+      let buttom = document.getElementById(id);
+      buttom.className = "btn btn-success";
+      buttom.innerHTML = "Agregar";
     }
   }
   localStorage.setItem("materials", JSON.stringify(materials));

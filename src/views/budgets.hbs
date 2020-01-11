@@ -1,30 +1,198 @@
+<header class="text-center text-white">
+  <h1 class="display-4">Presupuestos</h1>
+</header>
 <div class="container">
-    <div class="alert alert-success text-center" id="dashboard" role="alert">
-    <h1>Presupuestos </h1>
-  </div>
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputName">Nombre</label>
+        <input type="text" class="form-control" id="inputName">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputConcerned">Interesado</label>
+        <input type="text" class="form-control" id="inputConcerned" readonly placeholder="Usar botton Agregar">
+        <div class="form-group row">
+          <!-- Button trigger modal -->
 
-  <div class="panel">
-    <div class="body">
-      <form class="form-inline my-2 my-lg-0">
-        <input id="searchBox" class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-      </form>
+          <div class="col-sm-10">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addConcerned">Agregar
+              Interesado</button>
+          </div>
+        </div>
+      </div>
+      <!-- Modal Interesado -->
+      <div class="modal fade" id="addConcerned" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="Concerned" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Agregar Interesado</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputZone">Zona</label>
+        <input type="text" class="form-control" id="inputZone" readonly placeholder="Usar botton Agregar">
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addZone">Agregar
+              Zona</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Zona -->
+      <div class="modal fade" id="addZone" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="Zone"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Agregar Zona</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="inputType">Tipo</label>
+        <select id="inputType" class="form-control">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputState">Estado</label>
+        <select id="inputState" class="form-control">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <button type="button" class="btn btn-success">Crear Presupuesto</button>
+      </div>
+  </form>
+  <!-- Materials modal -->
+  <div class="modal fade bd-Materials-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="panel">
+          <div class="body">
+            <form class="form-inline my-2 my-lg-0">
+              <input id="searchMaterial" class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+            </form>
+          </div>
+        </div>
+        <table class="mountTable table hover">
+          <tbody>
+            <tr>
+              <th>Codigo</th>
+              <th>Referencia</th>
+              <th>Cantidad</th>
+              <th>Opciones</th>
+            </tr>
+
+            {{#if materials}}
+
+            {{#each materials}}
+            <tr>
+              <td id="codigo{{@key}}">{{codigo}}</td>
+              <td id="referencia{{@key}}">{{referencia}}</td>
+              <td><input id="cantidad{{@key}}" type="number" name="quantity" min="1" value="1" class="number"></td>
+              <td>
+                <a class="btn btn-success" id="{{@key}}" onclick="addMaterial(id)">
+                  Agregar
+                </a>
+              </td>
+            </tr>
+            {{/each}}
+            {{else}}
+
+            <div class="alert alert-warning" role="alert">
+              No existen Materiales
+            </div>
+
+            {{/if}}
+
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-  <table class="myTable table hover">
-    <tbody>
-      <tr>
-        <th>Zona</th>
-        <th>Tipo</th>
-        <th>Nombre</th>
-        <th>Id Interesado</th>
-        <th>Estado</th>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>1</td>
-        <td>delectus aut autem</td>
-        <td>yes</td>
-      </tr>
-    </tbody>
-  </table>
 </div>
+<!-- Mounts modal -->
+<div class="modal fade bd-Mounts-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="panel">
+        <div class="body">
+          <form class="form-inline my-2 my-lg-0">
+            <input id="searchMount" class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+          </form>
+        </div>
+      </div>
+      <table class="materialTable table hover">
+        <tbody>
+          <tr>
+            <th>Codigo</th>
+            <th>Descripcion</th>
+            <th>T-MOntje</th>
+            <th>Opciones</th>
+          </tr>
+          {{#if mounts}}
+
+          {{#each mounts}}
+          <tr>
+            <td id="codigo{{@key}}">{{codigo}}</td>
+            <td id="referencia{{@key}}">{{descripcion}}</td>
+            <td id="descripcion{{@key}}" class="text-right">{{tipoMontaje}}</td>
+            <td>
+              <a href="/delete-mount/{{@key}}" class="btn btn-danger">
+                delete
+              </a>
+            </td>
+          </tr>
+          {{/each}}
+          {{else}}
+
+          <div class="alert alert-warning" role="alert">
+            No existen Montajes
+          </div>
+
+          {{/if}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Accordion Postes -->
+<div class="container">
+  <div class="form-group col-md-4">
+    <button type="button" class="btn btn-primary" onclick="addPost()">Agregar Poste</button>
+  </div>
+  <div class="accordion" id="accordionPosts">
+  </div>
+</div>
+
+</div>
+<script src="/js/budgets.js"></script>

@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const db = require('./db');
+const db = require("./db");
 /* RUTAS PRINCIPALES */
 
 //Renderisa la pantalla principal
@@ -22,10 +22,16 @@ router.get("/login", (req, res) => {
 
 //Renderisa la pantalla de presupuestos
 router.get("/budgets", (req, res) => {
-  db.ref("contact").once("value", snapshot => {
-    const data = snapshot.val();
-    res.render("budgets", { contact: data });
+  let materialdata = [];
+  let mountdata = [];
+  db.ref("material").once("value", snapshot => {
+    materialdata = snapshot.val();
+    db.ref("montaje").once("value", snapshot => {
+      mountdata = snapshot.val();
+      res.render("budgets", { materials: materialdata, mounts: mountdata });
+    });
   });
+
 });
 
 /* RUTA DE MONTAJES */
@@ -57,9 +63,9 @@ router.post("/new-mounts", (req, res) => {
 });
 
 router.get("/delete-mount/:id", (req, res) => {
-    db.ref("montaje/" + req.params.id).remove();
-    res.redirect("/viewMounts");
-  });
+  db.ref("montaje/" + req.params.id).remove();
+  res.redirect("/viewMounts");
+});
 
 /* RUTA DE MATERIALES */
 
@@ -72,7 +78,7 @@ router.get("/materials", (req, res) => {
 });
 
 router.post("/new-material", (req, res) => {
-    console.log("***********ESTO ES UN OBJETO************")
+  console.log("***********ESTO ES UN OBJETO************");
   console.dir(req.body);
 
   const newMaterial = {

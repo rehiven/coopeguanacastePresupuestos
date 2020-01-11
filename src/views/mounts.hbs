@@ -1,8 +1,9 @@
+<header class="text-center text-white">
+  <h1 class="display-4">Montajes</h1>
+</header>
+
 <div>
   <div class="container">
-    <div class="alert alert-success text-center" id="dashboard" role="alert">
-      <h1>Montajes </h1>
-    </div>
     <!-- MOUNT FORM -->
     <form id="formMouts">
       <div class="form-row">
@@ -90,7 +91,9 @@
                           {{/each}}
                           {{else}}
 
-                          <p>No Materials yet</p>
+                          <div class="alert alert-warning" role="alert">
+                            No existen Materiales
+                          </div>
 
                           {{/if}}
 
@@ -116,7 +119,8 @@
         <tr>
           <th scope="col">Codigo</th>
           <th scope="col">Referencia</th>
-          <th scope="col">cantidad</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Opciones</th>
         </tr>
       </thead>
       <tbody id="materialBody" class="tbodyData">
@@ -124,6 +128,19 @@
       </tbody>
     </table>
   </div>
+  <script>
+
+    let options = {
+      numberPerPage: 10, //Cantidad de datos por pagina
+      goBar: true, //Barra donde puedes digitar el numero de la pagina al que quiere ir
+      pageCounter: true, //Contador de paginas, en cual estas, de cuantas paginas
+    };
+
+    let filterOptions = {
+      el: '#searchBox' //Caja de texto para filtrar, puede ser una clase o un ID
+    };
+    paginate.init('.myTable', options, filterOptions);
+  </script>
 
   <script src="/js/mounts.js"></script>
   <script src="/js/main.js"></script>
