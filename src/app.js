@@ -26,7 +26,11 @@ app.use(require('./routes/index.js'));
 app.use(require('./routes/materials.js'));
 app.use(require('./routes/mounts.js'));
 app.use(require('./routes/budgets.js'));
-//app.use(require('./routes/users.js'));
+//app.use(require('./routes/zone.js'));
+app.use(require('./routes/concerned.js'));
+//app.use(require('./routes/type.js'));
+//app.use(require('./routes/state.js'));
+//app.use(require('./routes/users.js'));s
 //static files
 
 app.use(express.static(path.join(__dirname, 'public')));

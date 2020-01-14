@@ -43,7 +43,7 @@ function addPost() {
         <form class="form-inline my-2 my-lg-0">
           <input id="searchBox" class="form-control mr-sm-2" type="search" placeholder="Buscar"
             aria-label="Search">
-          <button type="button" class="btn btn-primary" id="${id}" onclick="showModalMaterial(id) ">Agregar Montaje</button>
+          <button type="button" class="btn btn-primary" id="${id}" onclick="showModalMount(id) ">Agregar Montaje</button>
           <button type="button" class="btn btn-primary" id="${id}" onclick="showModalMaterial(id)" >Agregar Material</button>
         </form>
       </div>
